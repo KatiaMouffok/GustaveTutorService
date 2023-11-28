@@ -20,14 +20,14 @@ public class Plateforme extends UnicastRemoteObject implements IPlateforme, Seri
 	
     private Map<String, ITuteur> tuteurs;
     private Map<String, IEtudiant> etudiants;
-    private List<Seance> seances;
+  
     
    
     
     public Plateforme() throws RemoteException {
         this.tuteurs = new HashMap<String,ITuteur>();
         this.etudiants = new HashMap<String,IEtudiant>();
-        this.seances =new ArrayList<Seance>();
+       
     }
     
     
@@ -123,6 +123,17 @@ public class Plateforme extends UnicastRemoteObject implements IPlateforme, Seri
     	
 		return null;	
     }
+
+
+
+
+
+
+
+
+
+
+	
 
 
 }

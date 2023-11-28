@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("serial")
 public class Etudiant extends Utilisateur implements IEtudiant, Serializable {
 	
   	
@@ -49,13 +50,13 @@ public class Etudiant extends Utilisateur implements IEtudiant, Serializable {
 	}
     
 	public void reserverSeance(ISeance s, String m) throws RemoteException {
-		if (s.getTuteur()!=null) {
+		
 		if (s.getTuteur().getDomainesExpertise().contains(m)) {
 			s.setEtudiant(this);
 			s.setMatiere(m);
 			this.mesSeances.add(s);
 		}
-		}
+		
 		
 	}
 
