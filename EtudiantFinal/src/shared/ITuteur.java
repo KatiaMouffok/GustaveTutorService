@@ -22,5 +22,7 @@ public interface ITuteur extends IUtilisateur, Remote {
     public void libererTuteurParSeance(ISeance c) throws RemoteException;
 
     public boolean seanceDisponible(ISeance c) throws RemoteException;
+    public void Tuteur(String nom,String email,String password, List<String> domainesExpertise) throws RemoteException;
+
 
 }

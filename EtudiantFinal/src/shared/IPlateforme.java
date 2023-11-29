@@ -11,7 +11,7 @@ import shared.ISeance;
 public interface IPlateforme extends Remote {
 
     public ISeance programmerSeance() throws RemoteException ;
-    public void inscrireTuteur(ITuteur tuteur) throws RemoteException ;
+    public void inscrireTuteur(ITuteur t) throws RemoteException ;
     public void inscrireEtudiant(IEtudiant e) throws RemoteException ;
     public List<ITuteur> getTuteursParMatiere(String m) throws RemoteException;
     public List<ISeance> getSeancesLibre(List<ITuteur> c) throws RemoteException;
@@ -20,5 +20,4 @@ public interface IPlateforme extends Remote {
     public Map<String,ITuteur> getTuteurs() throws RemoteException;
     public Map<String,IEtudiant> getEtudiant()throws RemoteException ;
     public void ajouterListeAttente (IEtudiant e, ITuteur t) throws RemoteException ;
-
 }

@@ -27,20 +27,31 @@ public class Tuteur extends Utilisateur implements Serializable,ITuteur {
         this.mesSeancesTutorat=new ArrayList<ISeance>();
     }
     
+    public void Tuteur(String nom,String email,String password, List<String> domainesExpertise) throws RemoteException {
+
+    	Tuteur(nom,email,password,domainesExpertise);
+    }
 
     public List<String> getDomainesExpertise() throws RemoteException{
-        return domainesExpertise;
+        return this.domainesExpertise;
     }
     public void addDomaineExpertise(String d)throws RemoteException {
-    	domainesExpertise.add(d);
+    	List<String>maListe =this.domainesExpertise;
+    	maListe.add(d);
+    	this.domainesExpertise=maListe;
+    	System.out.println(this.getNom());
+    	
     }
     
     public List<IEtudiant> getListeAttente()throws RemoteException{
         return this.listeAttente;
     }
     public void addToListAttente (IEtudiant e)throws RemoteException {
-    	this.listeAttente.add(e);
-    	System.out.println(" l'etudiant "+ e.getNom()+" est ajouté a la liste d'attente");
+    	if (!listeAttente.contains(e)) {
+    		this.listeAttente.add(e);
+        	System.out.println(" l'etudiant "+ e.getNom()+" est ajouté a la liste d'attente");
+    	}else System.out.println("L'etudian fait deja partie de la liste d'attente");
+    	
     }
     
     public void notifierEtudiants(ISeance c) throws RemoteException {

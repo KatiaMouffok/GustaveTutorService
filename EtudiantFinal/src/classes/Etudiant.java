@@ -55,6 +55,7 @@ public class Etudiant extends Utilisateur implements IEtudiant, Serializable {
 			s.setEtudiant(this);
 			s.setMatiere(m);
 			this.mesSeances.add(s);
+			
 		}
 		
 		

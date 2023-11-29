@@ -29,23 +29,21 @@ public class Plateforme extends UnicastRemoteObject implements IPlateforme, Seri
         this.etudiants = new HashMap<String,IEtudiant>();
        
     }
-    
-    
+   
 
  
    
-
-
-    
 
     
     /**************************************************************************************************/
     public Map<String,ITuteur> getTuteurs() {
         return this.tuteurs;
     }
-    public void inscrireTuteur(ITuteur tuteur) throws RemoteException {
-        System.out.println("Inscription de tuteur " + tuteur.getNom() );
-        tuteurs.put(tuteur.getEmail(), tuteur);
+    public void inscrireTuteur(ITuteur t) throws RemoteException {
+    	
+    	
+    	System.out.println("Inscription de tuteur " + t.getNom() );
+        tuteurs.put(t.getEmail(), t);
     }
     
     public Map<String,IEtudiant> getEtudiant() {
@@ -121,7 +119,7 @@ public class Plateforme extends UnicastRemoteObject implements IPlateforme, Seri
     		tpm.addAll(t.getSeancesDisponibles());
     	}
     	
-		return null;	
+		return tpm;	
     }
 
 
