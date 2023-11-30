@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BanqueService WSDL service -->
+
+  <service name="Banque" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://banque"/>
+      <parameter name="wsdlServiceElement" value="BanqueService"/>
+      <parameter name="schemaQualified" value="http://banque"/>
+      <parameter name="wsdlServicePort" value="Banque"/>
+      <parameter name="className" value="banque.Banque"/>
+      <parameter name="wsdlPortType" value="Banque"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://banque" xmlns:retNS="http://banque" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="effectuerPaiement" qname="operNS:effectuerPaiement" returnQName="retNS:effectuerPaiementReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:numeroCarte" type="tns:string"/>
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dateExpiration" type="tns:string"/>
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:codeVerification" type="tns:int"/>
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nomTitulaire" type="tns:string"/>
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:montant" type="tns:double"/>
+      </operation>
+      <operation xmlns:operNS="http://banque" xmlns:retNS="http://banque" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDevise" qname="operNS:getDevise" returnQName="retNS:getDeviseReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:identifiant" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://banque" name="recevoirPaiement" qname="operNS:recevoirPaiement" soapAction="">
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nomDesti" type="tns:string"/>
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:montant" type="tns:double"/>
+      </operation>
+      <operation xmlns:operNS="http://banque" xmlns:retNS="http://banque" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="virement" qname="operNS:virement" returnQName="retNS:virementReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:nomTitulaire" type="tns:string"/>
+        <parameter xmlns:pns="http://banque" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:montant" type="tns:double"/>
+      </operation>
+      <parameter name="allowedMethods" value="effectuerPaiement virement recevoirPaiement getDevise"/>
+
+  </service>
+</deployment>

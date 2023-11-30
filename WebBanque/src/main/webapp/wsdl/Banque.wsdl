@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://banque" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://banque" xmlns:intf="http://banque" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://banque" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="effectuerPaiement">
+    <complexType>
+     <sequence>
+      <element name="numeroCarte" type="xsd:string"/>
+      <element name="dateExpiration" type="xsd:string"/>
+      <element name="codeVerification" type="xsd:int"/>
+      <element name="nomTitulaire" type="xsd:string"/>
+      <element name="montant" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="effectuerPaiementResponse">
+    <complexType>
+     <sequence>
+      <element name="effectuerPaiementReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDevise">
+    <complexType>
+     <sequence>
+      <element name="identifiant" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDeviseResponse">
+    <complexType>
+     <sequence>
+      <element name="getDeviseReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="recevoirPaiement">
+    <complexType>
+     <sequence>
+      <element name="nomDesti" type="xsd:string"/>
+      <element name="montant" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="recevoirPaiementResponse">
+    <complexType/>
+   </element>
+   <element name="virement">
+    <complexType>
+     <sequence>
+      <element name="nomTitulaire" type="xsd:string"/>
+      <element name="montant" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="virementResponse">
+    <complexType>
+     <sequence>
+      <element name="virementReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="recevoirPaiementResponse">
+
+      <wsdl:part element="impl:recevoirPaiementResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeviseRequest">
+
+      <wsdl:part element="impl:getDevise" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="recevoirPaiementRequest">
+
+      <wsdl:part element="impl:recevoirPaiement" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="effectuerPaiementResponse">
+
+      <wsdl:part element="impl:effectuerPaiementResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="effectuerPaiementRequest">
+
+      <wsdl:part element="impl:effectuerPaiement" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="virementRequest">
+
+      <wsdl:part element="impl:virement" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeviseResponse">
+
+      <wsdl:part element="impl:getDeviseResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="virementResponse">
+
+      <wsdl:part element="impl:virementResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Banque">
+
+      <wsdl:operation name="effectuerPaiement">
+
+         <wsdl:input message="impl:effectuerPaiementRequest" name="effectuerPaiementRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:effectuerPaiementResponse" name="effectuerPaiementResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDevise">
+
+         <wsdl:input message="impl:getDeviseRequest" name="getDeviseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDeviseResponse" name="getDeviseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="recevoirPaiement">
+
+         <wsdl:input message="impl:recevoirPaiementRequest" name="recevoirPaiementRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:recevoirPaiementResponse" name="recevoirPaiementResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="virement">
+
+         <wsdl:input message="impl:virementRequest" name="virementRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:virementResponse" name="virementResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BanqueSoapBinding" type="impl:Banque">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="effectuerPaiement">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="effectuerPaiementRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="effectuerPaiementResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDevise">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDeviseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDeviseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="recevoirPaiement">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="recevoirPaiementRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="recevoirPaiementResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="virement">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="virementRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="virementResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BanqueService">
+
+      <wsdl:port binding="impl:BanqueSoapBinding" name="Banque">
+
+         <wsdlsoap:address location="http://localhost:8080/WebBanque/services/Banque"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
